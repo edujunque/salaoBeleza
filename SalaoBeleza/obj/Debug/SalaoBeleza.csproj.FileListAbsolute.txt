@@ -86,3 +86,4 @@ C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migration
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\bin\Facebook.dll
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\bin\Facebook.xml
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.includingCustomerModel.resources
+C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.updatingRequiredFieldsCustomer.resources

@@ -29,8 +29,8 @@ namespace SalaoBeleza.Models
         [StringLength(14)]
         public string CPF { get; set; }
 
-        public DateTime DtRegister { get; set; }
-        public DateTime DtBirthDay { get; set; }
+        public DateTime? DtRegister { get; set; }
+        public DateTime? DtBirthDay { get; set; }
 
     }
 }
