@@ -11,6 +11,7 @@ using Microsoft.Owin.Security;
 using SalaoBeleza.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Facebook;
+using System.Collections.Generic;
 
 namespace SalaoBeleza.Controllers
 {
@@ -77,7 +78,10 @@ namespace SalaoBeleza.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            //obtem user name através do email
+            ApplicationUser userName = UserManager.FindByEmail(model.Email);
+
+            var result = await SignInManager.PasswordSignInAsync(userName.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -95,7 +99,7 @@ namespace SalaoBeleza.Controllers
 
         //
         // GET: /Account/VerifyCode
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login
@@ -109,7 +113,7 @@ namespace SalaoBeleza.Controllers
         //
         // POST: /Account/VerifyCode
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
@@ -138,7 +142,7 @@ namespace SalaoBeleza.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Register()
         {
             return View();
@@ -146,16 +150,20 @@ namespace SalaoBeleza.Controllers
 
         //
         // POST: /Account/Register
+        // TODO: Incluir regra para apenas role CanManaUsers conseguir 
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageUsers)]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserName,
                     Email = model.Email,
-                    PhoneNumber = model.PhoneNumber };
+                    PhoneNumber = model.PhoneNumber,
+                    EmailConfirmed = true
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -168,16 +176,17 @@ namespace SalaoBeleza.Controllers
                     //await roleManager.CreateAsync(new IdentityRole("CanManageUsers"));
                     //await UserManager.AddToRoleAsync(user.Id, "CanManageUsers");
 
+                    //Não é necessario logar o usuario recem cadastrado, pois os cadastros serão realizados apenas pelo ADMIN master
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
+                    return RedirectToAction("List", "Account");
                 }
                 AddErrors(result);
             }
@@ -216,19 +225,18 @@ namespace SalaoBeleza.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                var user = await UserManager.FindByEmailAsync(model.Email);
+                if (user != null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return View("ForgotPasswordConfirmation");
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    return RedirectToAction("ForgotPasswordConfirmation", "Account");
                 }
 
-                // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+
             }
 
             // If we got this far, something failed, redisplay form
@@ -262,7 +270,7 @@ namespace SalaoBeleza.Controllers
             {
                 return View(model);
             }
-            var user = await UserManager.FindByNameAsync(model.Email);
+            var user = await UserManager.FindByEmailAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
@@ -394,7 +402,7 @@ namespace SalaoBeleza.Controllers
                 }
 
 
-                var user = new ApplicationUser { UserName = info.DefaultUserName, Email = info.Email };
+                var user = new ApplicationUser { UserName = info.DefaultUserName, Email = info.Email, EmailConfirmed = true };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -419,7 +427,102 @@ namespace SalaoBeleza.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
+        }
+
+        //TODO - verificar como restringir para apenas role CanManageUsers
+        public ActionResult List()
+        {
+            var result = UserManager.Users.ToList();
+            if (User.IsInRole(RoleName.CanManageUsers))
+            {
+                return View("List", result);
+            }
+            else
+            {
+                return View("ReadOnlyList", result);
+            }
+
+        }
+
+
+        //TODO - verificar como restringir para apenas role CanManageUsers
+        public ActionResult Details(string Id)
+        {
+            var result = UserManager.Users.Where(c => c.Id == Id).FirstOrDefault();
+            return View("Details", result);
+        }
+
+        //TODO - verificar como restringir para apenas role CanManageUsers
+        public ActionResult Edit(string Id)
+        {
+            var result = UserManager.Users.Where(c => c.Id == Id).FirstOrDefault();
+            return View("Edit", result);
+        }
+
+        //
+        //TODO - verificar como restringir para apenas role CanManageUsers
+        // POST: /Account/Edit
+        [HttpPost]
+        //[AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageUsers)]
+        public async Task<ActionResult> Edit(ApplicationUser model)
+        {
+            if (ModelState.IsValid)
+            {
+                //Caso a consulta dê erro já esta sendo tratado juntamente com o update
+                var user = UserManager.Users.Where(c => c.Id == model.Id).FirstOrDefault();
+                if (user != null)
+                {
+                    user.Email = model.Email;
+                    user.UserName = model.UserName;
+                    user.PhoneNumber = model.PhoneNumber;
+                }
+
+                var result = await UserManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("List", "Account");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        //TODO - verificar como restringir para apenas role CanManageUsers
+        public ActionResult Delete(string Id)
+        {
+            var result = UserManager.Users.Where(c => c.Id == Id).FirstOrDefault();
+            return View("Delete", result);
+        }
+
+        //
+        //TODO - verificar como restringir para apenas role CanManageUsers
+        // POST: /Account/Edit
+        [HttpPost]
+        //[AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageUsers)]
+        public async Task<ActionResult> Delete(ApplicationUser model)
+        {
+            if (ModelState.IsValid)
+            {
+                //Caso a consulta dê erro já esta sendo tratado juntamente com o update
+                var user = UserManager.Users.Where(c => c.Id == model.Id).FirstOrDefault();
+
+                var result = await UserManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("List", "Account");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         //

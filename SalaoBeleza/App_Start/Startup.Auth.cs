@@ -61,20 +61,21 @@ namespace SalaoBeleza
             //   appSecret: "9e1e14ccf5a88ec521def832cf759d9b");
 
 
-            app.UseFacebookAuthentication(new FacebookAuthenticationOptions
-            {
-                AppId = "125728244731246",
-                AppSecret = "9e1e14ccf5a88ec521def832cf759d9b",
-                Scope = { "email" },
-                Provider = new FacebookAuthenticationProvider
-                {
-                    OnAuthenticated = context =>
-                    {
-                        context.Identity.AddClaim(new System.Security.Claims.Claim("FacebookAccessToken", context.AccessToken));
-                        return Task.FromResult(true);
-                    }
-                }
-            });
+            //Comentado pois aparentemente não faz sentido ter essa funcionade
+            //app.UseFacebookAuthentication(new FacebookAuthenticationOptions
+            //{
+            //    AppId = "125728244731246",
+            //    AppSecret = "9e1e14ccf5a88ec521def832cf759d9b",
+            //    Scope = { "email" },
+            //    Provider = new FacebookAuthenticationProvider
+            //    {
+            //        OnAuthenticated = context =>
+            //        {
+            //            context.Identity.AddClaim(new System.Security.Claims.Claim("FacebookAccessToken", context.AccessToken));
+            //            return Task.FromResult(true);
+            //        }
+            //    }
+            //});
 
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
