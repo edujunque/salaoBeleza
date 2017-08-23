@@ -222,8 +222,13 @@
     <Compile Include="Migrations\201708221902111_SeedUsers.Designer.cs">
       <DependentUpon>201708221902111_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708232054094_includingCustomerModel.cs" />
+    <Compile Include="Migrations\201708232054094_includingCustomerModel.Designer.cs">
+      <DependentUpon>201708232054094_includingCustomerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RoleName.cs" />
@@ -313,6 +318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708221902111_SeedUsers.resx">
       <DependentUpon>201708221902111_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708232054094_includingCustomerModel.resx">
+      <DependentUpon>201708232054094_includingCustomerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
