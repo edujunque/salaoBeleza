@@ -1,0 +1,62 @@
+﻿@model SalaoBeleza.ViewModels.NewBookingViewModel
+
+@{
+    ViewBag.Title = "Agendamento - Criação";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Novo agendamento</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Agendamento</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bookings.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Bookings.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Bookings.Descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bookings.DtAgendamento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Bookings.DtAgendamento, new { htmlAttributes = new { @class = "form-control select_Cliente_Agendamento", @id = "datetimepicker4", @type = "text" } })
+                @Html.ValidationMessageFor(model => model.Bookings.DtAgendamento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bookings.Customer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Bookings.CustomerId, new SelectList(Model.Customers, "Id", "Name"), "Selecione um cliente", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Bookings.CustomerId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="SALVAR" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Voltar para lista", "Index")
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker4').datetimepicker();
+        });
+    </script>
+
+}

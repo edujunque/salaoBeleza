@@ -21,11 +21,23 @@ namespace SalaoBeleza
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/moment.js",
+                      "~/Scripts/bootstrap-datetimepicker.js",
+                      "~/Scripts/jquery.unobtrusive-ajax.js",
+                      "~/Scripts/jquery.validate-vsdoc.js",
+                      "~/Scripts/jquery.validate.js",
+                      "~/Scripts/jquery.validate.unobtrusive.js",
+                      "~/Scripts/globalize.js",
+                      "~/Scripts/jquery.validate.globalize.js"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-paper.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/bootstrap-datetimepicker.css"
+                      ));
+
         }
     }
 }

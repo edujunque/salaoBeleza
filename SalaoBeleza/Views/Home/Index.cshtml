@@ -13,7 +13,7 @@
         <p>
             Aqui você pode visualizar, cadastrar, editar e deletar os cadastros dos clientes.
         </p>
-        <p><a href="#" class="btn btn-primary btn-lg">Clientes</a></p>
+        <p>@Html.ActionLink("CLIENTES", "Index", "Customers", null, new { @class = "btn btn-primary btn-lg" })</p>
     </div>
     <div class="col-md-4">
         <h2>Usuários internos</h2>
@@ -27,6 +27,6 @@
         <p>
             Aqui você pode visualizar, cadastrar, editar e deletar os agendamentos realizados.
         </p>
-        <p><a href="#" class="btn btn-primary btn-lg">Agendamentos</a></p>
+        <p>@Html.ActionLink("AGENDAMENTOS", "Index", "Bookings",null, new { @class = "btn btn-primary btn-lg" })</p>
     </div>
 </div>

@@ -21,4 +21,6 @@ input,
 select,
 textarea {
     max-width: 280px;
+    min-width: 170px;
 }
+
