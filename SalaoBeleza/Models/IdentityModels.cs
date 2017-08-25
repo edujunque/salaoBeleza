@@ -32,6 +32,8 @@ namespace SalaoBeleza.Models
 
         public DbSet<SalaoBeleza.Models.Customer> Customers { get; set; }
         public DbSet<SalaoBeleza.Models.Booking> Bookings { get; set; }
+        public DbSet<SalaoBeleza.Models.Products> Products { get; set; }
+        
 
         //public System.Data.Entity.DbSet<SalaoBeleza.Models.ApplicationUser> ApplicationUsers { get; set; }
 
