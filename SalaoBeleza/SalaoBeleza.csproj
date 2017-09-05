@@ -210,6 +210,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookingsController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -248,10 +249,19 @@
     <Compile Include="Migrations\201708251438545_AddProductsTable.Designer.cs">
       <DependentUpon>201708251438545_AddProductsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709051851574_AddFuncionarios.cs" />
+    <Compile Include="Migrations\201709051851574_AddFuncionarios.Designer.cs">
+      <DependentUpon>201709051851574_AddFuncionarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709051900279_alterBookingTableAddingEmployeeReference.cs" />
+    <Compile Include="Migrations\201709051900279_alterBookingTableAddingEmployeeReference.Designer.cs">
+      <DependentUpon>201709051900279_alterBookingTableAddingEmployeeReference.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Booking.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Employees.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Products.cs" />
@@ -463,6 +473,11 @@
     <Content Include="Views\Products\Details.cshtml" />
     <Content Include="Views\Products\Edit.cshtml" />
     <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -496,6 +511,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708251438545_AddProductsTable.resx">
       <DependentUpon>201708251438545_AddProductsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709051851574_AddFuncionarios.resx">
+      <DependentUpon>201709051851574_AddFuncionarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709051900279_alterBookingTableAddingEmployeeReference.resx">
+      <DependentUpon>201709051900279_alterBookingTableAddingEmployeeReference.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

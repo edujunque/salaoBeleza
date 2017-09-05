@@ -28,5 +28,12 @@ namespace SalaoBeleza.Models
         [Required]
         [Display(Name = "Cliente")]
         public byte CustomerId { get; set; }
+
+        [Display(Name = "Funcionário")]
+        public Employees Employee { get; set; }
+
+        [Required]
+        [Display(Name = "Funcionário")]
+        public byte EmployeesId { get; set; }
     }
 }

@@ -21,10 +21,11 @@ namespace SalaoBeleza.Controllers
         {
 
             //popula os dados do cliente para mostrar o nome na listagem
-            var agendamentos = await db.Bookings.Include(c => c.Customer).OrderBy(c=> c.DtAgendamento).ToListAsync();
+            var agendamentos = await db.Bookings.Include(c => c.Customer).Include(c => c.Employee).OrderBy(c=> c.DtAgendamento).ToListAsync();
             foreach (var item in agendamentos)
             {
                item.Customer = await db.Customers.Where(c => c.Id == item.CustomerId).FirstOrDefaultAsync();
+               item.Employee = await db.Employees.Where(c => c.Id == item.EmployeesId).FirstOrDefaultAsync();
             }
 
             return View(agendamentos);
@@ -44,6 +45,7 @@ namespace SalaoBeleza.Controllers
             }
             //incluir o customer no objeto da view
             booking.Customer = await db.Customers.Where(c => c.Id == booking.CustomerId).FirstOrDefaultAsync();
+            booking.Employee = await db.Employees.Where(c => c.Id == booking.EmployeesId).FirstOrDefaultAsync();
             return View(booking);
         }
 
@@ -52,6 +54,7 @@ namespace SalaoBeleza.Controllers
         {
             var viewModel = new NewBookingViewModel();
             viewModel.Customers = db.Customers.ToList();
+            viewModel.Employees = db.Employees.ToList();
             return View(viewModel);
         }
 
@@ -89,6 +92,7 @@ namespace SalaoBeleza.Controllers
             }
             var viewModel = new NewBookingViewModel();
             viewModel.Customers = db.Customers.ToList();
+            viewModel.Employees = db.Employees.ToList();
             viewModel.Bookings = booking;
             return View(viewModel);
         }
@@ -123,6 +127,7 @@ namespace SalaoBeleza.Controllers
             }
             //incluir o customer no objeto da view
             booking.Customer = await db.Customers.Where(c => c.Id == booking.CustomerId).FirstOrDefaultAsync();
+            booking.Employee = await db.Employees.Where(c => c.Id == booking.EmployeesId).FirstOrDefaultAsync();
             return View(booking);
         }
 

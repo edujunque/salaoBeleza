@@ -91,3 +91,5 @@ C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migration
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.updating_Model_Booking_DataAnnotations.resources
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.updating_Model_Booking_DataAnnotations_RequiredCUstomerID.resources
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.AddProductsTable.resources
+C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.AddFuncionarios.resources
+C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.alterBookingTableAddingEmployeeReference.resources

@@ -10,6 +10,8 @@ namespace SalaoBeleza.ViewModels
     {
         public IEnumerable<Customer> Customers { get; set; }
 
+        public IEnumerable<Employees> Employees { get; set; }
+
         public Booking Bookings { get; set; }
     }
 }
