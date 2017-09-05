@@ -12,6 +12,7 @@ using SalaoBeleza.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Facebook;
 using System.Collections.Generic;
+using SalaoBeleza.ViewModels;
 
 namespace SalaoBeleza.Controllers
 {
@@ -25,7 +26,7 @@ namespace SalaoBeleza.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -37,9 +38,9 @@ namespace SalaoBeleza.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -85,7 +86,8 @@ namespace SalaoBeleza.Controllers
             {
                 ModelState.AddModelError("", "Invalid login attempt.");
                 return View(model);
-            } else
+            }
+            else
             {
                 var result = await SignInManager.PasswordSignInAsync(userName.UserName, model.Password, model.RememberMe, shouldLockout: false);
                 switch (result)
@@ -133,7 +135,7 @@ namespace SalaoBeleza.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -166,7 +168,9 @@ namespace SalaoBeleza.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.UserName,
+                var user = new ApplicationUser
+                {
+                    UserName = model.UserName,
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
                     EmailConfirmed = true
@@ -441,13 +445,26 @@ namespace SalaoBeleza.Controllers
         public ActionResult List()
         {
             var result = UserManager.Users.ToList();
+            List<UsersListViewModel> userList = new List<UsersListViewModel>();
+            UsersListViewModel user;
+
+            foreach (var item in result)
+            {
+                user = new UsersListViewModel();
+                user.Id = item.Id;
+                user.PhoneNumber = item.PhoneNumber;
+                user.UserName = item.UserName;
+                user.Email = item.Email;
+                userList.Add(user);
+            }
+
             if (User.IsInRole(RoleName.CanManageUsers))
             {
-                return View("List", result);
+                return View("List", userList);
             }
             else
             {
-                return View("ReadOnlyList", result);
+                return View("ReadOnlyList", userList);
             }
 
         }
@@ -457,14 +474,29 @@ namespace SalaoBeleza.Controllers
         public ActionResult Details(string Id)
         {
             var result = UserManager.Users.Where(c => c.Id == Id).FirstOrDefault();
-            return View("Details", result);
+            UsersListViewModel user;
+
+            user = new UsersListViewModel();
+            user.Id = result.Id;
+            user.PhoneNumber = result.PhoneNumber;
+            user.UserName = result.UserName;
+            user.Email = result.Email;
+
+            return View("Details", user);
         }
 
         //TODO - verificar como restringir para apenas role CanManageUsers
         public ActionResult Edit(string Id)
         {
             var result = UserManager.Users.Where(c => c.Id == Id).FirstOrDefault();
-            return View("Edit", result);
+            UsersListViewModel user;
+
+            user = new UsersListViewModel();
+            user.Id = result.Id;
+            user.PhoneNumber = result.PhoneNumber;
+            user.UserName = result.UserName;
+            user.Email = result.Email;
+            return View("Edit", user);
         }
 
         //
@@ -474,7 +506,7 @@ namespace SalaoBeleza.Controllers
         //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.CanManageUsers)]
-        public async Task<ActionResult> Edit(ApplicationUser model)
+        public async Task<ActionResult> Edit(UsersListViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -503,7 +535,14 @@ namespace SalaoBeleza.Controllers
         public ActionResult Delete(string Id)
         {
             var result = UserManager.Users.Where(c => c.Id == Id).FirstOrDefault();
-            return View("Delete", result);
+            UsersListViewModel user;
+
+            user = new UsersListViewModel();
+            user.Id = result.Id;
+            user.PhoneNumber = result.PhoneNumber;
+            user.UserName = result.UserName;
+            user.Email = result.Email;
+            return View("Delete", user);
         }
 
         //
@@ -513,7 +552,7 @@ namespace SalaoBeleza.Controllers
         //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = RoleName.CanManageUsers)]
-        public async Task<ActionResult> Delete(ApplicationUser model)
+        public async Task<ActionResult> Delete(UsersListViewModel model)
         {
             if (ModelState.IsValid)
             {

@@ -62,7 +62,7 @@ namespace SalaoBeleza.Models
     {
         [Required]
         [Phone]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Telefone")]
         public string Number { get; set; }
     }
 
@@ -74,7 +74,7 @@ namespace SalaoBeleza.Models
 
         [Required]
         [Phone]
-        [Display(Name = "Phone Number")]
+        [Display(Name = "Telefone")]
         public string PhoneNumber { get; set; }
     }
 

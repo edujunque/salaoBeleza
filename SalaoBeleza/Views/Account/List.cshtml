@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SalaoBeleza.Models.ApplicationUser>
+﻿@model IEnumerable<SalaoBeleza.ViewModels.UsersListViewModel>
 
 @{
     ViewBag.Title = "Listagem de usuários";
@@ -36,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Excluir", "Delete", new { id=item.Id })
         </td>
     </tr>
 }
