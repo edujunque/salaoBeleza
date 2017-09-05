@@ -36,6 +36,7 @@ namespace SalaoBeleza.Models
         public DateTime? DtRegister { get; set; }
 
         [Display(Name = "Data de Nascimento")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? DtBirthDay { get; set; }
 
     }
