@@ -81,19 +81,26 @@ namespace SalaoBeleza.Controllers
             //obtem user name através do email
             ApplicationUser userName = UserManager.FindByEmail(model.Email);
 
-            var result = await SignInManager.PasswordSignInAsync(userName.UserName, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
+            if (userName == null)
             {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+            } else
+            {
+                var result = await SignInManager.PasswordSignInAsync(userName.UserName, model.Password, model.RememberMe, shouldLockout: false);
+                switch (result)
+                {
+                    case SignInStatus.Success:
+                        return RedirectToLocal(returnUrl);
+                    case SignInStatus.LockedOut:
+                        return View("Lockout");
+                    case SignInStatus.RequiresVerification:
+                        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    case SignInStatus.Failure:
+                    default:
+                        ModelState.AddModelError("", "Invalid login attempt.");
+                        return View(model);
+                }
             }
         }
 

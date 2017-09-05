@@ -20,6 +20,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
                         </button>
                         @Html.ActionLink("SALÃO DE BELEZA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
                     </div>
@@ -29,6 +30,7 @@
                             <li>@Html.ActionLink("CLIENTES", "Index", "Customers")</li>
                             <li>@Html.ActionLink("USUÁRIOS INTERNOS", "List", "Account")</li>
                             <li>@Html.ActionLink("AGENDAMENTOS", "Index", "Bookings")</li>
+                            <li>@Html.ActionLink("PRODUTOS", "Index", "Products")</li>
                         </ul>
                         @Html.Partial("_LoginPartial")
                     </div>
