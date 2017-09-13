@@ -1,4 +1,11 @@
-﻿
+﻿@model SalaoBeleza.ViewModels.calendarAuxViewModel
+
+@{
+    string auxHorario = "teste";
+    string auxNomeUsuario = "teste";
+}
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +40,7 @@
             background-color: rgb(240,240,240);
             height: 50%;
             max-height: 35px;
-            margin-top: 5px;
+            margin-top: 2px;
             justify-content: center;
             align-items: center;
             display: flex;
@@ -44,7 +51,7 @@
             background-color: rgba(0,0,255,0.2);
             border-radius: 5px;
             margin-top: 5px;
-            height: 100%
+            height: 100%;
         }
     </style>
 </head>
@@ -65,65 +72,47 @@
                     <div class="colune-branca">
                         <div class="nome-pessoa-calendar">
                         </div>
-                        <div class="coluna-horario">
-                            <div>8:00</div>
-                        </div>
-                        <div class="coluna-horario">
-                            <div>8:30</div>
-                        </div>
-                        <div class="coluna-horario">
-                            <div>9:00</div>
-                        </div>
-                        <div class="coluna-horario">
-                            <div>9:30</div>
-                        </div>
-                        <div class="coluna-horario">
-                            <div>10:00</div>
-                        </div>
-                        <div class="coluna-horario">
-                            <div>10:30</div>
-                        </div>
-                        <div class="coluna-horario">
-                            <div>11:00</div>
-                        </div>
-                        <div class="coluna-horario">
-                            <div>11:30</div>
-                        </div>
-                        <div class="coluna-horario">
-                            <div>12:00</div>
-                        </div>
+                        @foreach (var item in Model.itensCalendario)
+                        {
+                            //verifica se o horario mudou, caso sim, adiciona uma nova div.
+                            if (item.strHorario != auxHorario)
+                            {
+                                auxHorario = item.strHorario;
+                                <div class="coluna-horario">
+                                    <div>@item.strHorario</div>
+                                </div>
+
+                            }
+
+                        }
                     </div>
-                    <div class="coluna-pessoa-calendar">
-                        <div class="nome-pessoa-calendar">
-                            Cabelo 1
-                        </div>
-                    </div>
-                    <div class="coluna-pessoa-calendar">
-                        <div class="nome-pessoa-calendar">
-                            Cabelo 1
-                        </div>
-                        <div class="descricao-agendamento">eita</div>
-                    </div>
-                    <div class="coluna-pessoa-calendar">
-                        <div class="nome-pessoa-calendar">
-                            Cabelo 1
-                        </div>
-                    </div>
-                    <div class="coluna-pessoa-calendar">
-                        <div class="nome-pessoa-calendar">
-                            Cabelo 1
-                        </div>
-                    </div>
-                    <div class="coluna-pessoa-calendar">
-                        <div class="nome-pessoa-calendar">
-                            Cabelo 1
-                        </div>
+                    @foreach (var item in Model.funcionarios)
+                    {
+
+                            var auxCalendario = Model.itensCalendario.Where(c => c.nomeUsuario == item.Name);
+                            auxNomeUsuario = item.Name;
+                            <div class="colune-branca">
+
+                                <div class="nome-pessoa-calendar">
+                                    @item.Name
+                                </div>
+                               
+                                @foreach (var calendarioPorUser in auxCalendario)
+                                {
+                                     <div class="coluna-horario">@calendarioPorUser.descricao</div>
+                                }
+                                
+                            </div>
+                        
+
+                        //verifica se o horario mudou, caso sim, adiciona uma nova div.
+
+                    }
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
 
 @Scripts.Render("~/bundles/jquery")

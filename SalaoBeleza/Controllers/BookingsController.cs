@@ -21,7 +21,7 @@ namespace SalaoBeleza.Controllers
         {
 
             //popula os dados do cliente para mostrar o nome na listagem
-            var agendamentos = await db.Bookings.Include(c => c.Customer).Include(c => c.Employee).OrderBy(c=> c.DtAgendamento).ToListAsync();
+            var agendamentos = await db.Bookings.Include(c => c.Customer).Include(c => c.Employee).OrderBy(c=> c.DtAgendamentoInicio).ToListAsync();
             foreach (var item in agendamentos)
             {
                item.Customer = await db.Customers.Where(c => c.Id == item.CustomerId).FirstOrDefaultAsync();

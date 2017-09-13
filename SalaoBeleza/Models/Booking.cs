@@ -15,9 +15,14 @@ namespace SalaoBeleza.Models
         public string Descricao { get; set; }
 
         [Required]
-        [Display(Name = "Data Agendada")]
+        [Display(Name = "Horario Inicio")]
         //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime DtAgendamento { get; set; }
+        public DateTime DtAgendamentoInicio { get; set; }
+
+        [Required]
+        [Display(Name = "Horario Fim")]
+        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime DtAgendamentoFim { get; set; }
 
         [Display(Name = "Data do Registro")]
         public DateTime DtRegistro { get; set; }

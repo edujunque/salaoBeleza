@@ -93,3 +93,4 @@ C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migration
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.AddProductsTable.resources
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.AddFuncionarios.resources
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.alterBookingTableAddingEmployeeReference.resources
+C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migrations.AlterTableBookingInsertEndDate.resources

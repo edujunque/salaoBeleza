@@ -25,10 +25,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Bookings.DtAgendamento, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Bookings.DtAgendamentoInicio, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Bookings.DtAgendamento, new { htmlAttributes = new { @class = "form-control select_Cliente_Agendamento", @id = "datetimepicker4", @type = "text" } })
-                @Html.ValidationMessageFor(model => model.Bookings.DtAgendamento, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Bookings.DtAgendamentoInicio, new { htmlAttributes = new { @class = "form-control select_Cliente_Agendamento", @id = "datetimepicker4", @type = "text" } })
+                @Html.ValidationMessageFor(model => model.Bookings.DtAgendamentoInicio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Bookings.DtAgendamentoFim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Bookings.DtAgendamentoFim, new { htmlAttributes = new { @class = "form-control select_Cliente_Agendamento", @id = "datetimepicker5", @type = "text" } })
+                @Html.ValidationMessageFor(model => model.Bookings.DtAgendamentoFim, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -64,6 +72,7 @@
     <script type="text/javascript">
         $(function () {
             $('#datetimepicker4').datetimepicker();
+            $('#datetimepicker5').datetimepicker();
         });
     </script>
 
