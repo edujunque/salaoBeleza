@@ -45,30 +45,34 @@ namespace SalaoBeleza.Controllers
             Booking maiorHorarioDia = db.Bookings.Where(c => c.DtAgendamentoFim.Year == strFiltroData.Year && c.DtAgendamentoFim.Month == strFiltroData.Month && c.DtAgendamentoFim.Day == strFiltroData.Day).OrderByDescending(c => c.DtAgendamentoFim).Take(1).FirstOrDefault();
 
             //Adiciona e subtrai uma hora de cada extremo para que o calendario tenha um "respiro" de visualização
-            menorHorarioDia.DtAgendamentoInicio = menorHorarioDia.DtAgendamentoInicio.AddHours(-1);
-            maiorHorarioDia.DtAgendamentoFim = maiorHorarioDia.DtAgendamentoFim.AddHours(1);
+            //menorHorarioDia.DtAgendamentoInicio = menorHorarioDia.DtAgendamentoInicio.AddHours(-1);
+            //maiorHorarioDia.DtAgendamentoFim = maiorHorarioDia.DtAgendamentoFim.AddHours(1);
+
+            DateTime auxMenorHorario = menorHorarioDia.DtAgendamentoInicio.AddHours(-1);
+            DateTime auxMaiorHorario = maiorHorarioDia.DtAgendamentoFim.AddHours(1);
 
             List<Employees> listaFuncionarios = db.Employees.OrderBy(c => c.Name).ToList();
 
             //cria instancia da viewModel
             List<calendarViewModel> calendario = new List<calendarViewModel>();
             //While que percorre todos os horarios que precisam ser listados naquele dia.
-            while (menorHorarioDia.DtAgendamentoInicio <= maiorHorarioDia.DtAgendamentoFim)
+            while (auxMenorHorario <= auxMaiorHorario)
             {
 
                 //Percorre Listagem de funcionarios para criar todas as linhas daquele horario
                 foreach (var item in listaFuncionarios)
                 {
                     calendarViewModel auxCalendario = new calendarViewModel();
-                    auxCalendario.strHorario = menorHorarioDia.DtAgendamentoInicio.ToShortTimeString();
+                    auxCalendario.strHorario = auxMenorHorario.ToShortTimeString();
                     auxCalendario.nomeUsuario = item.Name;
-                    
-                    //verifica se o esse usuario esta com esse horario agendado, filtra pelo ID do usuario, dia selecionado no filtro e horario.
-                   List<Booking> agendamentoPorUsuario = db.Bookings.Where(c => c.EmployeesId == item.Id && c.DtAgendamentoInicio.Year == menorHorarioDia.DtAgendamentoInicio.Year && c.DtAgendamentoInicio.Month == menorHorarioDia.DtAgendamentoInicio.Month && c.DtAgendamentoInicio.Day == menorHorarioDia.DtAgendamentoInicio.Day).ToList();
 
+                    //verifica se o esse usuario esta com esse horario agendado, filtra pelo ID do usuario, dia selecionado no filtro e horario.
+                    List<Booking> agendamentoPorUsuario = new List<Booking>();
+                    agendamentoPorUsuario = db.Bookings.Where(c => c.EmployeesId == item.Id && c.DtAgendamentoInicio.Year == auxMenorHorario.Year && c.DtAgendamentoInicio.Month == auxMenorHorario.Month && c.DtAgendamentoInicio.Day == auxMenorHorario.Day).ToList();
+                    agendamentoPorUsuario = db.Bookings.Where(c => c.EmployeesId == item.Id).ToList();
                     //Filtro Hora
-                    //&& ((c.DtAgendamentoInicio.Hour >= menorHorarioDia.DtAgendamentoInicio.Hour && c.DtAgendamentoInicio.Minute >= menorHorarioDia.DtAgendamentoInicio.Minute) && (c.DtAgendamentoFim.Hour <= menorHorarioDia.DtAgendamentoInicio.Hour && c.DtAgendamentoFim.Minute <= menorHorarioDia.DtAgendamentoInicio.Minute))
-                  var auxAgendamentoPorUsuario =  agendamentoPorUsuario.Where(c => c.DtAgendamentoInicio.TimeOfDay <= menorHorarioDia.DtAgendamentoInicio.TimeOfDay && c.DtAgendamentoFim.TimeOfDay >= menorHorarioDia.DtAgendamentoInicio.TimeOfDay).FirstOrDefault();
+                    //&& ((c.DtAgendamentoInicio.Hour >= auxMenorHorario.Hour && c.DtAgendamentoInicio.Minute >= auxMenorHorario.Minute) && (c.DtAgendamentoFim.Hour <= auxMenorHorario.Hour && c.DtAgendamentoFim.Minute <= auxMenorHorario.Minute))
+                    var auxAgendamentoPorUsuario =  agendamentoPorUsuario.Where(c => c.DtAgendamentoInicio.TimeOfDay <= auxMenorHorario.TimeOfDay && c.DtAgendamentoFim.TimeOfDay > auxMenorHorario.TimeOfDay).FirstOrDefault();
                     //Verifica se existe agendamento para aquele dia, caso não já adiciona a flag false para não marcar essa data no calendario.
                     if (auxAgendamentoPorUsuario == null)
                     {
@@ -83,8 +87,8 @@ namespace SalaoBeleza.Controllers
                     calendario.Add(auxCalendario);
                 }
 
-                //System.Diagnostics.Debug.WriteLine(menorHorarioDia.DtAgendamentoInicio.ToShortTimeString());
-                menorHorarioDia.DtAgendamentoInicio = menorHorarioDia.DtAgendamentoInicio.AddMinutes(30);
+                //System.Diagnostics.Debug.WriteLine(auxMenorHorario.ToShortTimeString());
+                auxMenorHorario = auxMenorHorario.AddMinutes(30);
             }
             calendarAuxViewModel calendarAux = new calendarAuxViewModel();
             calendarAux.funcionarios = db.Employees.ToList();

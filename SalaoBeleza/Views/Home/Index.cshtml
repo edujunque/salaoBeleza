@@ -2,10 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+@*<div class="jumbotron">
     <h1>HOME</h1>
     <p class="lead">Aqui você vizualiza todas as funcionalidades disponíveis.</p>
-</div>
+</div>*@
 
 @*<div class="row">
     <div class="col-md-4">
@@ -30,6 +30,13 @@
         <p>@Html.ActionLink("AGENDAMENTOS", "Index", "Bookings",null, new { @class = "btn btn-primary btn-lg" })</p>
     </div>
 </div>*@
-<div class="row" style="height: 1000px">
+<div class="row" id="containerDivCalendar">
     @Html.Partial("_PartialView_Calendar")
 </div>
+
+<script>
+    $(document).ready(function () {
+        var windowsHei = $(window).height();
+        $(".containerDivCalendar").css('height', windowsHei + 150);
+    });
+</script>

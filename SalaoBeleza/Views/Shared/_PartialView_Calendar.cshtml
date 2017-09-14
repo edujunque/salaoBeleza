@@ -3,6 +3,7 @@
 @{
     string auxHorario = "teste";
     string auxNomeUsuario = "teste";
+    int auxAlturaCalendario = 240;
 }
 
 
@@ -53,22 +54,49 @@
             margin-top: 5px;
             height: 100%;
         }
+
+        .coluna1 {
+            background-color: burlywood;
+            color: white;
+        }
+
+        .coluna2 {
+            background-color: cadetblue;
+            color: white;
+        }
+
+        .coluna3 {
+            background-color: indigo;
+            color: white;
+        }
+
+        .coluna4 {
+            background-color: lightseagreen;
+            color: white;
+        }
+
+        .coluna5 {
+            background-color: steelblue;
+            color: white;
+        }
+        .container-fluid{
+            margin-top: 50px;
+        }
     </style>
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row" style="background-color: rgb(243,244,246)">
+        @*<div class="row" style="background-color: rgb(243,244,246)">
             <div class="col">
                 Agenda
             </div>
-        </div>
+        </div>*@
         <div class="row">
             <div class="col-sm-3">
                 <div id="datetimepicker12"></div>
             </div>
             <div class="col-sm-9">
-                grid com calendario
-                <div class="row" style="display:flex; flex-direction:row">
+                <div class="row" id="containerDivCalendar" style="display:flex; flex-direction:row">
                     <div class="colune-branca">
                         <div class="nome-pessoa-calendar">
                         </div>
@@ -78,45 +106,50 @@
                             if (item.strHorario != auxHorario)
                             {
                                 auxHorario = item.strHorario;
+                                auxAlturaCalendario = auxAlturaCalendario + 35;
                                 <div class="coluna-horario">
                                     <div>@item.strHorario</div>
+
                                 </div>
-
                             }
-
                         }
                     </div>
                     @foreach (var item in Model.funcionarios)
                     {
+                        var auxCalendario = Model.itensCalendario.Where(c => c.nomeUsuario == item.Name);
+                        auxNomeUsuario = item.Name;
 
-                            var auxCalendario = Model.itensCalendario.Where(c => c.nomeUsuario == item.Name);
-                            auxNomeUsuario = item.Name;
-                            <div class="colune-branca">
-
-                                <div class="nome-pessoa-calendar">
-                                    @item.Name
-                                </div>
-                               
-                                @foreach (var calendarioPorUser in auxCalendario)
-                                {
-                                     <div class="coluna-horario">@calendarioPorUser.descricao</div>
-                                }
-                                
+                        <div class="colune-branca">
+                            <div class="nome-pessoa-calendar">
+                                @item.Name
                             </div>
-                        
+                            @foreach (var calendarioPorUser in auxCalendario)
+                            {
+                                if (calendarioPorUser.blnAgendado)
+                                {
+                                    <div class="coluna-horario coluna@(item.Id)">@calendarioPorUser.descricao</div>
+                                }
+                                else
+                                {
+                                    <div class="coluna-horario"></div>
+                                }
 
-                        //verifica se o horario mudou, caso sim, adiciona uma nova div.
-
+                            }
+                        </div>
                     }
-                    </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
 
 @Scripts.Render("~/bundles/jquery")
 <script type="text/javascript">
+    $(document).ready(function() {
+        $("#containerDivCalendar").css('height', @auxAlturaCalendario);
+    });
     $(function () {
         $('#datetimepicker12').datetimepicker({
             inline: true,
