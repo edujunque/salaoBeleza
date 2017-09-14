@@ -25,9 +25,11 @@ namespace SalaoBeleza.Models
         public string SKU { get; set; }
 
         [Required]
+        [Display(Name = "Preço")]
         public string Price { get; set; }
 
         [Required]
+        [Display(Name = "Estoque")]
         public int Stock { get; set; }
     }
 }

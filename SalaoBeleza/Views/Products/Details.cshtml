@@ -1,14 +1,14 @@
 ﻿@model SalaoBeleza.Models.Products
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Produtos - Detalhes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
-    <h4>Products</h4>
+    <h4>Produto</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -54,6 +54,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para listagem", "Index")
 </p>
