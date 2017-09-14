@@ -3,7 +3,7 @@
 @{
     string auxHorario = "teste";
     string auxNomeUsuario = "teste";
-    int auxAlturaCalendario = 240;
+    int auxAlturaCalendario = 260;
 }
 
 
@@ -12,150 +12,72 @@
 <head>
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-    <style>
-        .colune-branca {
-            flex-grow: 1.5;
-            margin-right: 5px;
-            display: flow-root;
-        }
-
-        .coluna-pessoa-calendar {
-            flex-grow: 2;
-            margin-right: 5px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .nome-pessoa-calendar {
-            background-color: rgb(109,90,84);
-            flex-grow: 1;
-            color: white;
-            text-align: center;
-            font-size: large;
-            height: 100%;
-            max-height: 40px;
-        }
-
-        .coluna-horario {
-            flex-grow: 1;
-            background-color: rgb(240,240,240);
-            height: 50%;
-            max-height: 35px;
-            margin-top: 2px;
-            justify-content: center;
-            align-items: center;
-            display: flex;
-        }
-
-        .descricao-agendamento {
-            text-align: center;
-            background-color: rgba(0,0,255,0.2);
-            border-radius: 5px;
-            margin-top: 5px;
-            height: 100%;
-        }
-
-        .coluna1 {
-            background-color: burlywood;
-            color: white;
-        }
-
-        .coluna2 {
-            background-color: cadetblue;
-            color: white;
-        }
-
-        .coluna3 {
-            background-color: indigo;
-            color: white;
-        }
-
-        .coluna4 {
-            background-color: lightseagreen;
-            color: white;
-        }
-
-        .coluna5 {
-            background-color: steelblue;
-            color: white;
-        }
-        .container-fluid{
-            margin-top: 50px;
-        }
-    </style>
 </head>
 <body>
-    <div class="container-fluid">
-        @*<div class="row" style="background-color: rgb(243,244,246)">
-            <div class="col">
-                Agenda
-            </div>
-        </div>*@
-        <div class="row">
-            <div class="col-sm-3">
-                <div id="datetimepicker12"></div>
-            </div>
-            <div class="col-sm-9">
-                <div class="row" id="containerDivCalendar" style="display:flex; flex-direction:row">
-                    <div class="colune-branca">
-                        <div class="nome-pessoa-calendar">
-                        </div>
-                        @foreach (var item in Model.itensCalendario)
-                        {
-                            //verifica se o horario mudou, caso sim, adiciona uma nova div.
-                            if (item.strHorario != auxHorario)
-                            {
-                                auxHorario = item.strHorario;
-                                auxAlturaCalendario = auxAlturaCalendario + 35;
-                                <div class="coluna-horario">
-                                    <div>@item.strHorario</div>
 
-                                </div>
-                            }
-                        }
-                    </div>
-                    @foreach (var item in Model.funcionarios)
+    <div id="containerDivCalendar" style="display:flex; flex-direction:row; width: 100%">
+        @if (Model.funcionarios == null)
                     {
-                        var auxCalendario = Model.itensCalendario.Where(c => c.nomeUsuario == item.Name);
-                        auxNomeUsuario = item.Name;
-
-                        <div class="colune-branca">
-                            <div class="nome-pessoa-calendar">
-                                @item.Name
-                            </div>
-                            @foreach (var calendarioPorUser in auxCalendario)
-                            {
-                                if (calendarioPorUser.blnAgendado)
-                                {
-                                    <div class="coluna-horario coluna@(item.Id)">@calendarioPorUser.descricao</div>
-                                }
-                                else
-                                {
-                                    <div class="coluna-horario"></div>
-                                }
-
-                            }
-                        </div>
+                        auxAlturaCalendario = 300;
+            <div>Nenhum registro foi encontrado para essa data.</div>
                     }
+                    else
+                    {
+            <div class="colune-branca">
+                <div class="nome-pessoa-calendar">
                 </div>
+                @foreach (var item in Model.itensCalendario)
+                            {
+                                //verifica se o horario mudou, caso sim, adiciona uma nova div.
+                                if (item.strHorario != auxHorario)
+                                {
+                                    auxHorario = item.strHorario;
+                                    auxAlturaCalendario = auxAlturaCalendario + 35;
+                        <div class="coluna-horario">
+                            <div>@item.strHorario</div>
+
+                        </div>
+                                }
+                            }
             </div>
-        </div>
+                        foreach (var item in Model.funcionarios)
+                        {
+                            var auxCalendario = Model.itensCalendario.Where(c => c.nomeUsuario == item.Name);
+                            auxNomeUsuario = item.Name;
+
+            <div class="colune-branca">
+                <div class="nome-pessoa-calendar">
+                    @item.Name
+                </div>
+                @foreach (var calendarioPorUser in auxCalendario)
+                                {
+                                    if (calendarioPorUser.blnAgendado)
+                                    {
+                        <div class="coluna-horario coluna@(item.Id)">@calendarioPorUser.descricao</div>
+                                    }
+                                    else
+                                    {
+                        <div class="coluna-horario"></div>
+                                    }
+
+                                }
+            </div>
+                        }
+                    }
+
     </div>
+
 </body>
 
 </html>
 
-@Scripts.Render("~/bundles/jquery")
-<script type="text/javascript">
+@*@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")*@
+
+<script>
     $(document).ready(function() {
         $("#containerDivCalendar").css('height', @auxAlturaCalendario);
     });
-    $(function () {
-        $('#datetimepicker12').datetimepicker({
-            inline: true,
-            sideBySide: false,
-            format: 'L'
-        });
-    });
 </script>
+
 
