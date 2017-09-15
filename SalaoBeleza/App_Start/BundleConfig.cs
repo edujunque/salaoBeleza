@@ -31,7 +31,6 @@ namespace SalaoBeleza
                       "~/Scripts/globalize.js",
                       "~/Scripts/jquery.validate.globalize.js",
                       "~/Scripts/jquery-ui-1.12.1.js"
-
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/Site").Include(
@@ -43,6 +42,17 @@ namespace SalaoBeleza
                       "~/Content/site.css",
                       "~/Content/bootstrap-datetimepicker.css"
                       ));
+
+            bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
+            //~/Scripts/Inputmask/dependencyLibs/inputmask.dependencyLib.js",  //if not using jquery
+            "~/Scripts/Inputmask/inputmask.js",
+            "~/Scripts/Inputmask/jquery.inputmask.js",
+            "~/Scripts/Inputmask/inputmask.extensions.js",
+            "~/Scripts/Inputmask/inputmask.date.extensions.js",
+            //and other extensions you want to include
+            "~/Scripts/Inputmask/inputmask.numeric.extensions.js",
+            "~/Scripts/Inputmask/configurationMask.js"
+            ));
 
         }
     }
