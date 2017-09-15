@@ -30,19 +30,24 @@ namespace SalaoBeleza
                       "~/Scripts/jquery.validate.unobtrusive.js",
                       "~/Scripts/globalize.js",
                       "~/Scripts/jquery.validate.globalize.js",
-                      "~/Scripts/jquery-ui-1.12.1.js"
+                      "~/Scripts/jquery-ui-1.12.1.js",
+                      "~/Scripts/DataTables/jquery.dataTables.min.js"
+
                       ));
 
             bundles.Add(new ScriptBundle("~/bundles/Site").Include(
-                    "~/Scripts/_partialViewCalendar.js"
+                    "~/Scripts/_partialViewCalendar.js",
+                    "~/Scripts/dataTableCall.js"
           ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-paper.css",
                       "~/Content/site.css",
-                      "~/Content/bootstrap-datetimepicker.css"
+                      "~/Content/bootstrap-datetimepicker.css",
+                      "~/Content/DataTables/css/jquery.dataTables.min.css"
                       ));
 
+            
             bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(
             //~/Scripts/Inputmask/dependencyLibs/inputmask.dependencyLib.js",  //if not using jquery
             "~/Scripts/Inputmask/inputmask.js",
