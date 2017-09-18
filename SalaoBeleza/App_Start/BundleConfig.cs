@@ -31,7 +31,8 @@ namespace SalaoBeleza
                       "~/Scripts/globalize.js",
                       "~/Scripts/jquery.validate.globalize.js",
                       "~/Scripts/jquery-ui-1.12.1.js",
-                      "~/Scripts/DataTables/jquery.dataTables.min.js"
+                      "~/Scripts/DataTables/jquery.dataTables.min.js",
+                      "~/Content/plugins/iCheck/icheck.min.js"
 
                       ));
 
@@ -43,9 +44,11 @@ namespace SalaoBeleza
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       //"~/Content/bootstrap-paper.css",
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      "~/Content/admin-lte/css/AdminLTE.min.css",
+                      "~/Content/plugins/iCheck/square/blue.css",
+                      "~/Content/DataTables/css/jquery.dataTables.min.css",
                       "~/Content/bootstrap-datetimepicker.css",
-                      "~/Content/DataTables/css/jquery.dataTables.min.css"
+                      "~/Content/site.css"
                       ));
 
             
