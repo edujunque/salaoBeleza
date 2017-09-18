@@ -41,7 +41,8 @@ namespace SalaoBeleza
           ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-paper.css",
+                      //"~/Content/bootstrap-paper.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/bootstrap-datetimepicker.css",
                       "~/Content/DataTables/css/jquery.dataTables.min.css"

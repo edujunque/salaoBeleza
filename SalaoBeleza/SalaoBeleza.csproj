@@ -279,6 +279,36 @@
     <Compile Include="ViewModels\UsersListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin-lte\css\AdminLTE.css" />
+    <Content Include="admin-lte\css\AdminLTE.min.css" />
+    <Content Include="admin-lte\css\skins\skin-black-light.css" />
+    <Content Include="admin-lte\css\skins\skin-black-light.min.css" />
+    <Content Include="admin-lte\css\skins\skin-black.css" />
+    <Content Include="admin-lte\css\skins\skin-black.min.css" />
+    <Content Include="admin-lte\css\skins\skin-blue-light.css" />
+    <Content Include="admin-lte\css\skins\skin-blue-light.min.css" />
+    <Content Include="admin-lte\css\skins\skin-blue.css" />
+    <Content Include="admin-lte\css\skins\skin-blue.min.css" />
+    <Content Include="admin-lte\css\skins\skin-green-light.css" />
+    <Content Include="admin-lte\css\skins\skin-green-light.min.css" />
+    <Content Include="admin-lte\css\skins\skin-green.css" />
+    <Content Include="admin-lte\css\skins\skin-green.min.css" />
+    <Content Include="admin-lte\css\skins\skin-purple-light.css" />
+    <Content Include="admin-lte\css\skins\skin-purple-light.min.css" />
+    <Content Include="admin-lte\css\skins\skin-purple.css" />
+    <Content Include="admin-lte\css\skins\skin-purple.min.css" />
+    <Content Include="admin-lte\css\skins\skin-red-light.css" />
+    <Content Include="admin-lte\css\skins\skin-red-light.min.css" />
+    <Content Include="admin-lte\css\skins\skin-red.css" />
+    <Content Include="admin-lte\css\skins\skin-red.min.css" />
+    <Content Include="admin-lte\css\skins\skin-yellow-light.css" />
+    <Content Include="admin-lte\css\skins\skin-yellow-light.min.css" />
+    <Content Include="admin-lte\css\skins\skin-yellow.css" />
+    <Content Include="admin-lte\css\skins\skin-yellow.min.css" />
+    <Content Include="admin-lte\css\skins\_all-skins.css" />
+    <Content Include="admin-lte\css\skins\_all-skins.min.css" />
+    <Content Include="admin-lte\js\app.js" />
+    <Content Include="admin-lte\js\app.min.js" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-paper.css" />
@@ -286,6 +316,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
@@ -443,11 +475,13 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Icon.png" />
     <Content Include="Scripts\bootstrap-datetimepicker.es5.js">
       <DependentUpon>bootstrap-datetimepicker.js</DependentUpon>
     </Content>
@@ -456,8 +490,6 @@
     </Content>
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -540,15 +572,11 @@
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
     <Content Include="Scripts\cldr\supplemental.js" />
@@ -675,15 +703,22 @@
     <Content Include="Scripts\inputmask\phone-codes\phone-uk.min.js" />
     <Content Include="Scripts\inputmask\phone-codes\phone.js" />
     <Content Include="Scripts\inputmask\phone-codes\phone.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.es5.js">
-      <DependentUpon>jquery-1.10.2.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery-1.10.2.es5.min.js">
-      <DependentUpon>jquery-1.10.2.es5.js</DependentUpon>
-    </Content>
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.inputmask.bundle.js" />
     <Content Include="Scripts\jquery.inputmask.bundle.min.js" />
@@ -770,7 +805,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708221750084_InitialModel.resx">
