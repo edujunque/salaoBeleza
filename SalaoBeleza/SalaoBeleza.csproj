@@ -281,6 +281,14 @@
   <ItemGroup>
     <Content Include="Content\admin-lte\css\AdminLTE.css" />
     <Content Include="Content\admin-lte\css\AdminLTE.min.css" />
+    <Content Include="Content\admin-lte\css\alt\AdminLTE-bootstrap-social.css" />
+    <Content Include="Content\admin-lte\css\alt\AdminLTE-bootstrap-social.min.css" />
+    <Content Include="Content\admin-lte\css\alt\AdminLTE-fullcalendar.css" />
+    <Content Include="Content\admin-lte\css\alt\AdminLTE-fullcalendar.min.css" />
+    <Content Include="Content\admin-lte\css\alt\AdminLTE-select2.css" />
+    <Content Include="Content\admin-lte\css\alt\AdminLTE-select2.min.css" />
+    <Content Include="Content\admin-lte\css\alt\AdminLTE-without-plugins.css" />
+    <Content Include="Content\admin-lte\css\alt\AdminLTE-without-plugins.min.css" />
     <Content Include="Content\admin-lte\css\skins\skin-black-light.css" />
     <Content Include="Content\admin-lte\css\skins\skin-black-light.min.css" />
     <Content Include="Content\admin-lte\css\skins\skin-black.css" />
@@ -307,8 +315,45 @@
     <Content Include="Content\admin-lte\css\skins\skin-yellow.min.css" />
     <Content Include="Content\admin-lte\css\skins\_all-skins.css" />
     <Content Include="Content\admin-lte\css\skins\_all-skins.min.css" />
-    <Content Include="Content\admin-lte\js\app.js" />
-    <Content Include="Content\admin-lte\js\app.min.js" />
+    <Content Include="Content\admin-lte\img\avatar.png" />
+    <Content Include="Content\admin-lte\img\avatar04.png" />
+    <Content Include="Content\admin-lte\img\avatar2.png" />
+    <Content Include="Content\admin-lte\img\avatar3.png" />
+    <Content Include="Content\admin-lte\img\avatar5.png" />
+    <Content Include="Content\admin-lte\img\boxed-bg.jpg" />
+    <Content Include="Content\admin-lte\img\boxed-bg.png" />
+    <Content Include="Content\admin-lte\img\credit\american-express.png" />
+    <Content Include="Content\admin-lte\img\credit\cirrus.png" />
+    <Content Include="Content\admin-lte\img\credit\mastercard.png" />
+    <Content Include="Content\admin-lte\img\credit\mestro.png" />
+    <Content Include="Content\admin-lte\img\credit\paypal.png" />
+    <Content Include="Content\admin-lte\img\credit\paypal2.png" />
+    <Content Include="Content\admin-lte\img\credit\visa.png" />
+    <Content Include="Content\admin-lte\img\default-50x50.gif" />
+    <Content Include="Content\admin-lte\img\icons.png" />
+    <Content Include="Content\admin-lte\img\photo1.png" />
+    <Content Include="Content\admin-lte\img\photo2.png" />
+    <Content Include="Content\admin-lte\img\photo3.jpg" />
+    <Content Include="Content\admin-lte\img\photo4.jpg" />
+    <Content Include="Content\admin-lte\img\user1-128x128.jpg" />
+    <Content Include="Content\admin-lte\img\user2-160x160.jpg" />
+    <Content Include="Content\admin-lte\img\user3-128x128.jpg" />
+    <Content Include="Content\admin-lte\img\user4-128x128.jpg" />
+    <Content Include="Content\admin-lte\img\user5-128x128.jpg" />
+    <Content Include="Content\admin-lte\img\user6-128x128.jpg" />
+    <Content Include="Content\admin-lte\img\user7-128x128.jpg" />
+    <Content Include="Content\admin-lte\img\user8-128x128.jpg" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\ionicons.css" />
+    <Content Include="Content\ionicons.min.css" />
+    <Content Include="Scripts\adm-lte\adminlte.js" />
+    <Content Include="Scripts\adm-lte\adminlte.min.js" />
+    <Content Include="Scripts\adm-lte\app.js" />
+    <Content Include="Scripts\adm-lte\app.min.js" />
+    <Content Include="Scripts\adm-lte\demo.js" />
+    <Content Include="Scripts\adm-lte\pages\dashboard.js" />
+    <Content Include="Scripts\adm-lte\pages\dashboard2.js" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-paper.css" />
@@ -800,6 +845,7 @@
     <Content Include="Scripts\DataTables\responsive.jqueryui.min.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.js" />
     <Content Include="Scripts\DataTables\responsive.semanticui.min.js" />
+    <Content Include="Scripts\fastclick.js" />
     <Content Include="Scripts\globalize.js" />
     <Content Include="Scripts\globalize\currency.js" />
     <Content Include="Scripts\globalize\date.js" />
@@ -853,6 +899,11 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Content\plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Content\admin-lte\css\adminlte.css.map" />
+    <Content Include="Content\admin-lte\css\adminlte.min.css.map" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
     <Content Include="Scripts\jquery-2.1.3.min.js" />
@@ -866,6 +917,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.inputmask.bundle.js" />
     <Content Include="Scripts\jquery.inputmask.bundle.min.js" />
+    <Content Include="Scripts\jquery.slimscroll.js" />
+    <Content Include="Scripts\jquery.slimscroll.min.js" />
     <Content Include="Scripts\jquery.validate.globalize.js" />
     <Content Include="Scripts\jquery.validate.globalize.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -945,7 +998,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
