@@ -27,9 +27,10 @@ namespace SalaoBeleza
                     "~/Scripts/adm-lte/adminlte.min.js" ,
                     "~/Scripts/adm-lte/demo.js",
                     "~/Content/plugins/iCheck/icheck.min.js",
-                    "~/Scripts/DataTables/jquery.dataTables.min.js",
                     "~/Scripts/moment.js",
-                    "~/Scripts/bootstrap-datetimepicker.js"
+                    "~/Scripts/bootstrap-datetimepicker.js",
+                    "~/Scripts/jquery.dataTables.min.js",
+                    "~/Scripts/dataTables.bootstrap.min.js"
                  ));
 
             bundles.Add(new ScriptBundle("~/bundles/Site").Include(
@@ -44,8 +45,8 @@ namespace SalaoBeleza
                     "~/Content/admin-lte/css/AdminLTE.min.css",
                     "~/Content/admin-lte/css/skins/_all-skins.css",
                     "~/Content/plugins/iCheck/square/blue.css",
-                    "~/Content/DataTables/css/jquery.dataTables.min.css",
                     "~/Content/bootstrap-datetimepicker.css",
+                    "~/Content/dataTables.bootstrap.min.css",
                     "~/Content/site.css"
             ));
 
