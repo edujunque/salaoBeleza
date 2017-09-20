@@ -11,6 +11,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using SalaoBeleza.Models;
+using System.Net.Mail;
+using System.Configuration;
 
 namespace SalaoBeleza
 {
@@ -19,7 +21,12 @@ namespace SalaoBeleza
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            SmtpClient client = new SmtpClient();
+            return client.SendMailAsync("eduardo.junque@navegarti.com.br",
+                                        message.Destination,
+                                        message.Subject,
+                                        message.Body);
+            //return Task.FromResult(0);
         }
     }
 
