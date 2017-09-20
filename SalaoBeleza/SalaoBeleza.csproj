@@ -347,6 +347,7 @@
     <Content Include="Content\dataTables.bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\logo.jpeg" />
     <Content Include="Content\ionicons.css" />
     <Content Include="Content\ionicons.min.css" />
     <Content Include="Scripts\adm-lte\adminlte.js" />

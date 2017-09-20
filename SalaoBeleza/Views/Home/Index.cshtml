@@ -3,124 +3,21 @@
 }
 
 <style>
-    .container-fluid {
-        margin-top: 50px;
-    }
-
-    .colune-branca {
-        flex-grow: 1.5;
-        margin-right: 5px;
-        display: flow-root;
-        min-width: 40px;
-    }
-
-    .coluna-pessoa-calendar {
-        flex-grow: 2;
-        margin-right: 5px;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .nome-pessoa-calendar {
-        background-color: rgb(109,90,84);
-        flex-grow: 1;
-        color: white;
-        text-align: center;
-        font-size: large;
-        height: 100%;
-        max-height: 40px;
-    }
-
-    .coluna-horario {
-        flex-grow: 1;
-        background-color: rgb(240,240,240);
-        height: 50%;
-        max-height: 35px;
-        margin-top: 2px;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-
-    .descricao-agendamento {
-        text-align: center;
-        background-color: rgba(0,0,255,0.2);
-        border-radius: 5px;
-        margin-top: 5px;
-        height: 100%;
-    }
-
-    .coluna1 {
-        background-color: burlywood;
-        color: white;
-    }
-
-    .coluna2 {
-        background-color: cadetblue;
-        color: white;
-    }
-
-    .coluna3 {
-        background-color: indigo;
-        color: white;
-    }
-
-    .coluna4 {
-        background-color: lightseagreen;
-        color: white;
-    }
-
-    .coluna5 {
-        background-color: steelblue;
-        color: white;
-    }
-
-    .coluna6 {
-        background-color: steelblue;
-        color: white;
-    }
-
-    .coluna7 {
-        background-color: steelblue;
-        color: white;
-    }
-
-    .coluna8 {
-        background-color: steelblue;
-        color: white;
-    }
-
-    .coluna9 {
-        background-color: steelblue;
-        color: white;
-    }
-
-    .coluna10 {
-        background-color: steelblue;
-        color: white;
-    }
-
-    .coluna11 {
-        background-color: steelblue;
-        color: white;
-    }
-
-    .coluna12 {
-        background-color: steelblue;
-        color: white;
+    .box-body{
+        padding: 20px;
     }
 </style>
 
 <div class="row">
 
-    <div class="container-fluid">
+    <div class="calendar-container-fluid">
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
                 @*<input type='text' class="form-control" id='datetimepicker4' />*@
                 <div id="datetimepicker12"></div>
                 <input type="hidden" name="date" id="my_hidden_input" value="">
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-10">
                 @Html.Partial("_PartialView_Calendar")
             </div>
         </div>
