@@ -23,8 +23,8 @@
                     }
                     else
                     {
-            <div class="colune-branca">
-                <div class="nome-pessoa-calendar">
+            <div class="calendar-colune-branca calendario-coluna-horario">
+                <div class="calendar-nome-pessoa-calendar">
                 </div>
                 @foreach (var item in Model.itensCalendario)
                             {
@@ -33,7 +33,7 @@
                                 {
                                     auxHorario = item.strHorario;
                                     auxAlturaCalendario = auxAlturaCalendario + 35;
-                        <div class="coluna-horario">
+                        <div class="calendar-coluna-horario">
                             <div>@item.strHorario</div>
 
                         </div>
@@ -45,19 +45,19 @@
                             var auxCalendario = Model.itensCalendario.Where(c => c.nomeUsuario == item.Name);
                             auxNomeUsuario = item.Name;
 
-            <div class="colune-branca">
-                <div class="nome-pessoa-calendar">
+            <div class="calendar-colune-branca">
+                <div class="calendar-nome-pessoa-calendar">
                     @item.Name
                 </div>
                 @foreach (var calendarioPorUser in auxCalendario)
                                 {
                                     if (calendarioPorUser.blnAgendado)
                                     {
-                        <div class="coluna-horario coluna@(item.Id)">@calendarioPorUser.descricao</div>
+                        <div class="calendar-coluna-horario calendar-coluna@(item.Id)">@calendarioPorUser.descricao</div>
                                     }
                                     else
                                     {
-                        <div class="coluna-horario"></div>
+                        <div class="calendar-coluna-horario"></div>
                                     }
 
                                 }

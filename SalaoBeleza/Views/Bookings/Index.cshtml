@@ -5,12 +5,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Agendamentos</h2>
+@*<h2>Agendamentos</h2>*@
 
 <p>
     @Html.ActionLink("Criar novo Agendamento", "Create", "Bookings", null, new { @class = "btn btn-primary btn-lg" })
 </p>
-<table class="table">
+<table class="table table-bordered table-striped">
     <thead>
         <tr>
             <th>
@@ -34,36 +34,36 @@
             <th></th>
         </tr>
     </thead>
-
-@foreach (var item in Model)
-{
     <tbody>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DtAgendamentoInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DtAgendamentoFim)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DtRegistro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Excluir", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    </tbody>
-}
+        @foreach (var item in Model)
+        {
 
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtAgendamentoInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtAgendamentoFim)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DtRegistro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+
+        }
+    </tbody>
 </table>
