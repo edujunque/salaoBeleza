@@ -93,3 +93,4 @@ C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.Migration
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.csproj.GenerateResource.Cache
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.dll
 C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.pdb
+C:\CodigoFonte\SmartTech\SalaoBeleza\SalaoBeleza\obj\Debug\SalaoBeleza.csprojResolveAssemblyReference.cache
