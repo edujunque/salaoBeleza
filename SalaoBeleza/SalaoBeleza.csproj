@@ -18,8 +18,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44356</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -171,13 +170,13 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="WebGrease">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
-    </Reference>
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -314,8 +313,8 @@
     <Content Include="Content\admin-lte\css\skins\skin-yellow-light.min.css" />
     <Content Include="Content\admin-lte\css\skins\skin-yellow.css" />
     <Content Include="Content\admin-lte\css\skins\skin-yellow.min.css" />
-    <Content Include="Content\admin-lte\css\skins\_all-skins.css" />
-    <Content Include="Content\admin-lte\css\skins\_all-skins.min.css" />
+    <Content Include="Content\admin-lte\css\skins\all-skins.css" />
+    <Content Include="Content\admin-lte\css\skins\all-skins.min.css" />
     <Content Include="Content\admin-lte\img\avatar.png" />
     <Content Include="Content\admin-lte\img\avatar04.png" />
     <Content Include="Content\admin-lte\img\avatar2.png" />
