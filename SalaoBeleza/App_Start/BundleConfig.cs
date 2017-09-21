@@ -9,7 +9,7 @@ namespace SalaoBeleza
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-2.1.3.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
@@ -20,32 +20,35 @@ namespace SalaoBeleza
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js",
-                      "~/Scripts/moment.js",
-                      "~/Scripts/bootstrap-datetimepicker.js",
-                      "~/Scripts/jquery.unobtrusive-ajax.js",
-                      "~/Scripts/jquery.validate-vsdoc.js",
-                      "~/Scripts/jquery.validate.js",
-                      "~/Scripts/jquery.validate.unobtrusive.js",
-                      "~/Scripts/globalize.js",
-                      "~/Scripts/jquery.validate.globalize.js",
-                      "~/Scripts/jquery-ui-1.12.1.js",
-                      "~/Scripts/DataTables/jquery.dataTables.min.js"
-
-                      ));
+                    "~/Scripts/jquery-ui-1.12.1.js",
+                    "~/Scripts/bootstrap.min.js",
+                    "~/Scripts/jquery.slimscroll.min.js",
+                    "~/Scripts/fastclick.js",
+                    "~/Scripts/adm-lte/adminlte.min.js" ,
+                    "~/Scripts/adm-lte/demo.js",
+                    "~/Content/plugins/iCheck/icheck.min.js",
+                    "~/Scripts/moment.js",
+                    "~/Scripts/bootstrap-datetimepicker.js",
+                    "~/Scripts/jquery.dataTables.min.js",
+                    "~/Scripts/dataTables.bootstrap.min.js"
+                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/Site").Include(
                     "~/Scripts/_partialViewCalendar.js",
                     "~/Scripts/dataTableCall.js"
-          ));
+            ));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-paper.css",
-                      "~/Content/site.css",
-                      "~/Content/bootstrap-datetimepicker.css",
-                      "~/Content/DataTables/css/jquery.dataTables.min.css"
-                      ));
+            bundles.Add(new StyleBundle("~/Content/css_bundle").Include(
+                    "~/Content/bootstrap.min.css",
+                    "~/Content/font-awesome.min.css",
+                    "~/Content/ionicons.min.css",
+                    "~/Content/admin-lte/css/AdminLTE.min.css",
+                    "~/Content/admin-lte/css/skins/all-skins.css",
+                    "~/Content/plugins/iCheck/square/blue.css",
+                    "~/Content/bootstrap-datetimepicker.css",
+                    "~/Content/dataTables.bootstrap.min.css",
+                    "~/Content/site.css"
+            ));
 
             
             bundles.Add(new ScriptBundle("~/bundles/inputmask").Include(

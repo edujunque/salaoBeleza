@@ -243,8 +243,8 @@ namespace SalaoBeleza.Controllers
                     // Send an email with this link
                     string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                    await UserManager.SendEmailAsync(user.Id, "Esqueceu senha", "<div>Por favor, resete sua senha clicando no link <a href=\"" + callbackUrl + "\">resete sua senha</a></div>");
+                    return RedirectToAction("Login", "Account");
                 }
 
 
@@ -285,12 +285,12 @@ namespace SalaoBeleza.Controllers
             if (user == null)
             {
                 // Don't reveal that the user does not exist
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                return RedirectToAction("Login", "Account");
             }
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
+                return RedirectToAction("Login", "Account");
             }
             AddErrors(result);
             return View();

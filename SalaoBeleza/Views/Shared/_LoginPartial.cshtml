@@ -1,17 +1,37 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-    {
-    @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("OLÁ " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">LOG OFF</a></li>
-    </ul>
-    }
+    <li class="dropdown user user-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="~/Content/admin-lte/img/avatar5.png" class="user-image" alt="User Image" />
+            <span class="hidden-xs">@User.Identity.GetUserName()</span>
+        </a>
+        <ul class="dropdown-menu">
+            <!-- User image -->
+            <li class="user-header">
+                <img src="~/Content/admin-lte/img/avatar5.png" class="img-circle" alt="User Image" />
+                <p>
+                    @User.Identity.GetUserName()
+                </p>
+            </li>
+            <!-- Menu Footer-->
+            <li class="user-footer">
+                <div class="pull-left">
+                    @*<a href="#" class="btn btn-default btn-flat">Profile</a>*@
+                    @*@Html.ActionLink("Editar", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "btn btn-default btn-flat" })*@
+                </div>
+                <div class="pull-right">
+                    @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <a class="btn btn-default btn-flat" href="javascript:document.getElementById('logoutForm').submit()">LOG OFF</a>
+                    }
+                </div>
+            </li>
+        </ul>
+    </li>
+
 }
 else
 {

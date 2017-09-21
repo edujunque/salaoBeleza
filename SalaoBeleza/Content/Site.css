@@ -1,29 +1,129 @@
 ﻿html {
-  overflow-y: scroll;
+    overflow-y: scroll;
 }
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    /*padding-top: 50px;*/
+    /*padding-bottom: 20px;*/
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 15px;*/
+    /*padding-right: 15px;*/
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
 .dl-horizontal dt {
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-    min-width: 170px;
+.calendario-coluna-horario {
+    max-width: 65px;
 }
 
+.calendar-container-fluid {
+    margin-top: 10px;
+}
+
+.calendar-colune-branca {
+    flex-grow: 1.5;
+    margin-right: 5px;
+    display: flow-root;
+    min-width: 40px;
+}
+
+.calendar-coluna-pessoa-calendar {
+    flex-grow: 2;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-nome-pessoa-calendar {
+    background-color: rgb(109,90,84);
+    flex-grow: 1;
+    color: white;
+    text-align: center;
+    font-size: large;
+    height: 100%;
+    max-height: 40px;
+}
+
+.calendar-coluna-horario {
+    flex-grow: 1;
+    background-color: rgb(240,240,240);
+    height: 50%;
+    max-height: 35px;
+    margin-top: 2px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.calendar-descricao-agendamento {
+    text-align: center;
+    background-color: rgba(0,0,255,0.2);
+    border-radius: 5px;
+    margin-top: 5px;
+    height: 100%;
+}
+
+.calendar-coluna1 {
+    background-color: burlywood;
+    color: white;
+}
+
+.calendar-coluna2 {
+    background-color: cadetblue;
+    color: white;
+}
+
+.calendar-coluna3 {
+    background-color: indigo;
+    color: white;
+}
+
+.calendar-coluna4 {
+    background-color: lightseagreen;
+    color: white;
+}
+
+.calendar-coluna5 {
+    background-color: steelblue;
+    color: white;
+}
+
+.calendar-coluna6 {
+    background-color: steelblue;
+    color: white;
+}
+
+.calendar-coluna7 {
+    background-color: steelblue;
+    color: white;
+}
+
+.calendar-coluna8 {
+    background-color: steelblue;
+    color: white;
+}
+
+.calendar-coluna9 {
+    background-color: steelblue;
+    color: white;
+}
+
+.calendar-coluna10 {
+    background-color: steelblue;
+    color: white;
+}
+
+.calendar-coluna11 {
+    background-color: steelblue;
+    color: white;
+}
+
+.calendar-coluna12 {
+    background-color: steelblue;
+    color: white;
+}
